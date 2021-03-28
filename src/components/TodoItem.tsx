@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import { Text, HStack, Button, IconButton, Input } from '@chakra-ui/react'
+import { Text, HStack, IconButton, Input } from '@chakra-ui/react'
 import { EditIcon, DeleteIcon, CheckIcon, CloseIcon } from '@chakra-ui/icons'
 import { TodoContext } from '../ContextProvider/TodoContext'
 
@@ -50,13 +50,7 @@ export default function TodoItem({ content, index }: TodoItemProps) {
 
   return (
     <HStack>
-      <Text
-        letterSpacing='0.1rem'
-        flex={1}
-        paddingX='2.5'
-        borderBottom='2px'
-        borderColor='gray.600'
-      >
+      <Text flex={1} paddingX='2.5' borderBottom='2px' borderColor='gray.600'>
         {content}
       </Text>
       <IconButton
