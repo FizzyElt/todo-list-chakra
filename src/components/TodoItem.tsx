@@ -26,9 +26,11 @@ export default function TodoItem({ content, index }: TodoItemProps) {
 
   if (isEdit) {
     return (
-      <HStack>
+      <HStack align='stretch'>
         <Input
           value={editInput}
+          letterSpacing='0.1rem'
+          size='md'
           onChange={(e) => setEditInput(e.target.value)}
           fontSize='xl'
         />
@@ -48,7 +50,13 @@ export default function TodoItem({ content, index }: TodoItemProps) {
 
   return (
     <HStack>
-      <Text flex={1} paddingX='2.5' borderBottom='2px' borderColor='gray.600'>
+      <Text
+        letterSpacing='0.1rem'
+        flex={1}
+        paddingX='2.5'
+        borderBottom='2px'
+        borderColor='gray.600'
+      >
         {content}
       </Text>
       <IconButton

@@ -3,6 +3,7 @@ import { Container, VStack, Text } from '@chakra-ui/react'
 import TodoInput from './TodoInput'
 import TodoItem from './TodoItem'
 import { TodoContext } from '../ContextProvider/TodoContext'
+
 export default function TodoListCard() {
   const { items } = useContext(TodoContext)
 

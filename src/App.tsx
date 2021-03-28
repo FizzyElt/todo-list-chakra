@@ -3,6 +3,7 @@ import { ChakraProvider, Box, Grid, VStack } from '@chakra-ui/react'
 import TodoListCard from './components/TodoListCard'
 import theme from './theme'
 import TodoContextProvider from './ContextProvider/TodoContext'
+
 export const App = () => (
   <ChakraProvider theme={theme}>
     <TodoContextProvider>
