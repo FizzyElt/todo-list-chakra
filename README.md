@@ -1,3 +1,10 @@
+## Todo List
+- React
+- Chakra UI
+- Typescript
+
+![todolist img](./READMEimg/todolist.png)
+
 This project was bootstrapped with
 [Create React App](https://github.com/facebook/create-react-app).
 
