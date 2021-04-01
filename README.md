@@ -3,7 +3,7 @@
 - Chakra UI
 - Typescript
 
-![todolist img](./READMEimg/todolist.png)
+![todolistDate img](./READMEimg/todolistDate.png)
 
 This project was bootstrapped with
 [Create React App](https://github.com/facebook/create-react-app).
