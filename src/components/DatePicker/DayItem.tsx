@@ -1,5 +1,7 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Center } from '@chakra-ui/react'
+
+import { TodoContext } from '../../ContextProvider/TodoContext'
 
 type DayItemProp = {
   day: number
@@ -14,6 +16,15 @@ export default function DayItem({
   month,
   isCurrentMonth,
 }: DayItemProp) {
+  const { selectedDate, handleUpdateDate } = useContext(TodoContext)
+
+  const itemColor =
+    selectedDate.year === year &&
+    selectedDate.month === month &&
+    selectedDate.date === day
+      ? 'blue.500'
+      : 'transparent'
+
   if (isCurrentMonth) {
     return (
       <Center
@@ -22,10 +33,12 @@ export default function DayItem({
         w='10'
         borderRadius='md'
         cursor='pointer'
+        bgColor={itemColor}
         _hover={{
           bgColor: 'blue.500',
         }}
         color='white'
+        onClick={() => handleUpdateDate({ year, month, date: day })}
       >
         {day}
       </Center>

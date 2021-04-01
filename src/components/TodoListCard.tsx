@@ -14,10 +14,11 @@ export default function TodoListCard() {
           Todo List
         </Text>
         <TodoInput />
-        {items.map(({ content }, index) => {
+        {items.map(({ content, date }, index) => {
           return (
             <TodoItem
               key={`${content}_${index}`}
+              date={date}
               content={content}
               index={index}
             />

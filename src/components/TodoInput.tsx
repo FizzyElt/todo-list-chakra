@@ -1,18 +1,31 @@
 import React, { useState, useContext } from 'react'
 import { Input, Button, HStack } from '@chakra-ui/react'
 import { TodoContext } from '../ContextProvider/TodoContext'
+import format from 'date-fns/format'
 
 export default function TodoInput() {
-  const { handleAddItem } = useContext(TodoContext)
+  const { handleAddItem, selectedDate } = useContext(TodoContext)
   const [inputText, setInputText] = useState<string>('')
 
+  const formattedDate = format(
+    new Date(selectedDate.year, selectedDate.month, selectedDate.date),
+    'yyyy/MM/dd'
+  )
+
   const handleClick = () => {
-    inputText && handleAddItem(inputText)
+    inputText && handleAddItem(formattedDate, inputText)
     setInputText('')
   }
 
   return (
     <HStack align='stretch'>
+      <Input
+        w='3xs'
+        disabled
+        letterSpacing='0.1rem'
+        size='lg'
+        value={formattedDate}
+      />
       <Input
         letterSpacing='0.1rem'
         size='lg'

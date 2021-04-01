@@ -8,7 +8,7 @@ import DatePicker from './components/DatePicker'
 export const App = () => (
   <ChakraProvider theme={theme}>
     <TodoContextProvider>
-      <VStack width='full' marginY={32} alignItems='center'>
+      <VStack width='full' marginY={20} spacing={10} alignItems='center'>
         <DatePicker />
         <TodoListCard />
       </VStack>

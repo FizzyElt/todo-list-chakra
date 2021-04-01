@@ -1,14 +1,15 @@
 import React, { useContext, useState } from 'react'
-import { Text, HStack, IconButton, Input } from '@chakra-ui/react'
+import { Text, HStack, IconButton, Input, Center } from '@chakra-ui/react'
 import { EditIcon, DeleteIcon, CheckIcon, CloseIcon } from '@chakra-ui/icons'
 import { TodoContext } from '../ContextProvider/TodoContext'
 
 type TodoItemProps = {
   content: string
+  date: string
   index: number
 }
 
-export default function TodoItem({ content, index }: TodoItemProps) {
+export default function TodoItem({ content, index, date }: TodoItemProps) {
   const { handleDeleteItem, handleUpdateItem } = useContext(TodoContext)
 
   const [isEdit, setEdit] = useState<boolean>(false)
@@ -26,7 +27,8 @@ export default function TodoItem({ content, index }: TodoItemProps) {
 
   if (isEdit) {
     return (
-      <HStack align='stretch'>
+      <HStack align='center' spacing={4}>
+        <Text>{date}</Text>
         <Input
           value={editInput}
           letterSpacing='0.1rem'
@@ -34,35 +36,40 @@ export default function TodoItem({ content, index }: TodoItemProps) {
           onChange={(e) => setEditInput(e.target.value)}
           fontSize='xl'
         />
-        <IconButton
-          onClick={handleConfirmClick}
-          aria-label='confirm item'
-          icon={<CheckIcon color='green.400' />}
-        />
-        <IconButton
-          onClick={handleCancelClick}
-          aria-label='cancel item'
-          icon={<CloseIcon color='red.500' />}
-        />
+        <HStack>
+          <IconButton
+            onClick={handleConfirmClick}
+            aria-label='confirm item'
+            icon={<CheckIcon color='green.400' />}
+          />
+          <IconButton
+            onClick={handleCancelClick}
+            aria-label='cancel item'
+            icon={<CloseIcon color='red.500' />}
+          />
+        </HStack>
       </HStack>
     )
   }
 
   return (
-    <HStack>
+    <HStack spacing={4}>
+      <Text>{date}</Text>
       <Text flex={1} paddingX='2.5' borderBottom='2px' borderColor='gray.600'>
         {content}
       </Text>
-      <IconButton
-        onClick={() => setEdit(true)}
-        aria-label='edit item'
-        icon={<EditIcon />}
-      />
-      <IconButton
-        onClick={() => handleDeleteItem(index)}
-        aria-label='delete item'
-        icon={<DeleteIcon />}
-      />
+      <HStack>
+        <IconButton
+          onClick={() => setEdit(true)}
+          aria-label='edit item'
+          icon={<EditIcon />}
+        />
+        <IconButton
+          onClick={() => handleDeleteItem(index)}
+          aria-label='delete item'
+          icon={<DeleteIcon />}
+        />
+      </HStack>
     </HStack>
   )
 }
